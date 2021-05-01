@@ -1,4 +1,5 @@
 require('dotenv/config');
+
 import db from '../models';
 const Artista = db.artista;//     .models.Artists;
 

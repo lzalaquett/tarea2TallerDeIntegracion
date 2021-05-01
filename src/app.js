@@ -2,7 +2,7 @@ import 'dotenv/config';
 import path from 'path';
 import routes from './routes';
 const express = require('express');
-const { Sequelize } = require('sequelize');
+const Sequelize = require('sequelize');
 
 const PORT = process.env.PORT || 3050;
 
@@ -18,19 +18,9 @@ app.use((req, res) => {
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`))
 
-/*const connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'lucas',
-    password: 'Lc$Zala96',
-    database: 'tallerIntegracion',
-})*/
-/*const sequelize = new Sequelize('tallerIntegracion', 'lucas', 'Lc$Zala96', {
-    dialect: 'mysql',
-    host: 'localhost',
-});
-
+/*
 try {
-    sequelize.authenticate();
+    Sequelize.authenticate();
     console.log('Connection has been established successfully.');
 } catch (error) {
     console.error('Unable to connect to the database:', error);
