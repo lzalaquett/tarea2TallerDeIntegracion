@@ -13,6 +13,7 @@ module.exports = {
         username: process.env.DB_USERNAME,
         password: process.env.DB_PASWORD,
         host: process.env.DB_HOST,
-        dialect: "mysql"
+        port: process.env.DB_PORT,
+        dialect: "postgres"
     }
 }
