@@ -1,16 +1,16 @@
 {
   "name": "tarea2TallerDeIntegracion",
   "version": "1.0.0",
-  "main": "src/server.js",
+  "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "env NODE_ENV=development nodemon src/server.js"
+    "dev": "env NODE_ENV=development nodemon src/index.js",
+    "start": "node src/index.js"
   },
   "repository": "https://github.com/lzalaquett/tarea2TallerDeIntegracion.git",
   "author": "Lucas <lzalaquett@uc.cl>",
   "license": "MIT",
   "devDependencies": {
-    "express": "^4.17.1",
     "install": "^0.13.0",
     "npm": "^7.11.2",
     "sequelize": "^6.6.2",
@@ -20,6 +20,7 @@
     "dotenv": "^8.2.0",
     "eslint": "^7.25.0",
     "esm": "^3.2.25",
+    "express": "^4.17.1",
     "mysql2": "^2.2.5"
   }
 }
