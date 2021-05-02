@@ -8,17 +8,19 @@
     "dialect": "postgres"
   },
   "test": {
-    "username": "root",
-    "password": null,
-    "database": "database_test",
-    "host": "127.0.0.1",
-    "dialect": "mysql"
+    "username": "lxsjrtqsoawefv",
+    "password": "7a39ddf24c5e8cd6b306027608eded7fc6feb2cbdb79cc97d59b3bf9e765e37d",
+    "database": "d2jhk4ip1o7a2m",
+    "host": "ec2-54-163-140-104.compute-1.amazonaws.com",
+    "post": "5432",
+    "dialect": "postgres"
   },
   "production": {
-    "username": "root",
-    "password": null,
-    "database": "database_production",
-    "host": "127.0.0.1",
-    "dialect": "mysql"
+    "username": "lxsjrtqsoawefv",
+    "password": "7a39ddf24c5e8cd6b306027608eded7fc6feb2cbdb79cc97d59b3bf9e765e37d",
+    "database": "d2jhk4ip1o7a2m",
+    "host": "ec2-54-163-140-104.compute-1.amazonaws.com",
+    "post": "5432",
+    "dialect": "postgres"
   }
 }
