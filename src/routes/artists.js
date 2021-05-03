@@ -66,14 +66,20 @@ router.get('/:id/tracks', async(req, res) => {
     if (!tracks) {
         return res.status(404).send({
             message: 'canciones no encontradas',
-        })
+        });
     }
     return res.send(tracks);
 });
 
 router.post('/', async(req, res) => {
     const {name, age} = req.body;
-    const id = Buffer.from(name).toString('base64').substr(0, 21); //window.btoa(name).substr(0, 21);
+
+    if (!name || !age) {
+        return res.status(400).send({
+            message: `input inválido`
+        });
+    }
+    const id = Buffer.from(name).toString('base64').substr(0, 22); //window.btoa(name).substr(0, 22);
 
     let artistExists = await Artista.findOne({
         where:{
@@ -82,9 +88,7 @@ router.post('/', async(req, res) => {
     });
 
     if (artistExists) {
-        return res.status(409).send({
-            message: `artista ya esxiste`
-        })
+        return res.status(409).send(artistExists);
     }
 
     try {
@@ -118,7 +122,7 @@ router.post('/:id/albums', async(req, res) => {
         })
     }
 
-    const {id} = req.params;//Buffer.from(`name`).toString('base64').substr(0, 21);
+    const {id} = req.params;//Buffer.from(`name`).toString('base64').substr(0, 22);
 
     let artist = await Artista.findOne({
         where:{
@@ -132,7 +136,7 @@ router.post('/:id/albums', async(req, res) => {
         })
     }
 
-    const albumId = Buffer.from(`${name}:${artist.id}`).toString('base64').substr(0, 21);
+    const albumId = Buffer.from(`${name}:${artist.id}`).toString('base64').substr(0, 22);
 
     let albumExist = await Album.findOne({
         where:{
@@ -141,9 +145,7 @@ router.post('/:id/albums', async(req, res) => {
     });
 
     if (albumExist) {
-        return res.status(409).send({
-            message: `álbumn ya existe`,
-        });
+        return res.status(409).send(albumExist);
     }
 
     try {

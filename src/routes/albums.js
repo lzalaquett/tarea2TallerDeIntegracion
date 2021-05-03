@@ -59,7 +59,7 @@ router.post('/:id/tracks', async(req, res) => {
         })
     }
 
-    const {id} = req.params;//Buffer.from(`name`).toString('base64').substr(0, 21);
+    const {id} = req.params;//Buffer.from(`name`).toString('base64').substr(0, 22);
 
     const album = await Album.findOne({
         where:{
@@ -73,7 +73,7 @@ router.post('/:id/tracks', async(req, res) => {
         })
     }
 
-    const trackId = Buffer.from(`${name}:${album.id}`).toString('base64').substr(0, 21);
+    const trackId = Buffer.from(`${name}:${album.id}`).toString('base64').substr(0, 22);
 
     let trackExist = await Cancion.findOne({
         where:{
@@ -82,9 +82,7 @@ router.post('/:id/tracks', async(req, res) => {
     });
 
     if (trackExist) {
-        return res.status(409).send({
-            message: `cancion ya existe`,
-        });
+        return res.status(409).send(trackExist);
     }
 
     try {
