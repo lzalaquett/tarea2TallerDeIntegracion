@@ -194,9 +194,42 @@ router.delete('/:id', async(req, res) => {
             message: `Error de conexión con la base de datos -> error 500.`,
         });
     }
-    
 });
 
+router.put('/:id/albums/play', async(req, res) => {
+    const {id} = req.params;
 
+    const artistaExists = await Artista.findOne({
+        where: {
+            id,
+        },
+    });
+
+    if (!artistaExists) {
+        return res.status(404).send({
+            message: `artista no encontrado`,
+        });
+    };
+
+    const tracks = await Cancion.findAll({
+        where:{
+            artist_id: id,
+        },
+    });
+
+    tracks.map((track) => {
+        try {
+            track.update({times_played: track.times_played += 1});
+        } catch (error) {
+            return res.status(500).send({
+                message: `Error de conexión con la base de datos -> error 500.`,
+            });
+        }
+    });
+
+    return res.status(200).send({
+        message: `todas las canciones del artista fueron reproducidas`,
+    })
+});
 
 export default router;

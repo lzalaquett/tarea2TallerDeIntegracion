@@ -140,4 +140,40 @@ router.delete('/:id', async(req, res) => {
     } 
 });
 
+router.put('/:id/tracks/play', async(req, res) => {
+    const {id} = req.params;
+
+    const albumExists = await Album.findOne({
+        where: {
+            id,
+        },
+    });
+
+    if (!albumExists) {
+        return res.status(404).send({
+            message: `álbum no encontrado`,
+        });
+    };
+
+    const tracks = await Cancion.findAll({
+        where:{
+            album_id: id,
+        },
+    });
+
+    tracks.map((track) => {
+        try {
+            track.update({times_played: track.times_played += 1});
+        } catch (error) {
+            return res.status(500).send({
+                message: `Error de conexión con la base de datos -> error 500.`,
+            });
+        }
+    });
+
+    return res.status(200).send({
+        message: `canciones del álbum reproducidas`,
+    })
+});
+
 export default router;
