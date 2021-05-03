@@ -63,13 +63,12 @@ router.get('/:id/tracks', async(req, res) => {
 });
 
 router.post('/:id/tracks', async(req, res) => {
-
     const {name, duration} = req.body;
 
-    if (!name || !duration ) {
+    if (typeof name !== 'string' || typeof duration !== 'number') {
         return res.status(400).send({
-            message: `input inválido`,
-        })
+            message: `input inválido`
+        });
     }
 
     const {id} = req.params;//Buffer.from(`name`).toString('base64').substr(0, 22);

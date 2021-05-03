@@ -8,7 +8,6 @@ const Album = db.album;
 const Cancion = db.cancion;
 
 router.get('/', async(req, res) => {
-    //const {id} = req.params;
     const artists = await Artista.findAll();
 
     if (!artists) {
@@ -16,12 +15,10 @@ router.get('/', async(req, res) => {
             message: 'artista no encontrado',
         })
     }
-    
     return res.status(200).send(artists);
 });
 
 router.get('/:id', async(req, res) => {
-    
     const {id} = req.params;
     const artists = await Artista.findOne({
         where: {
@@ -97,7 +94,12 @@ router.get('/:id/tracks', async(req, res) => {
 router.post('/', async(req, res) => {
     const {name, age} = req.body;
 
-    if (!name || !age) {
+    /*if (!name || !age) {
+        return res.status(400).send({
+            message: `input inválido`
+        });
+    }*/
+    if (typeof name !== 'string' || typeof age !== 'number') {
         return res.status(400).send({
             message: `input inválido`
         });
@@ -139,10 +141,10 @@ router.post('/:id/albums', async(req, res) => {
 
     const {name, genre} = req.body;
 
-    if (!name || !genre) {
+    if (typeof name !== 'string' || typeof genre !== 'string') {
         return res.status(400).send({
-            message: `input inválido`,
-        })
+            message: `input inválido`
+        });
     }
 
     const {id} = req.params;//Buffer.from(`name`).toString('base64').substr(0, 22);
