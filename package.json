@@ -11,17 +11,18 @@
   "author": "Lucas <lzalaquett@uc.cl>",
   "license": "MIT",
   "devDependencies": {
+    "dotenv": "^8.2.0",
     "install": "^0.13.0",
+    "eslint": "^7.25.0",
     "npm": "^7.11.2",
+    "mysql2": "^2.2.5",
     "sequelize": "^6.6.2",
     "sequelize-cli": "^6.2.0"
   },
   "dependencies": {
     "dotenv": "^8.2.0",
-    "eslint": "^7.25.0",
     "esm": "^3.2.25",
     "express": "^4.17.1",
-    "mysql2": "^2.2.5",
     "pg": "^8.6.0",
     "pg-hstore": "^2.3.3",
     "sequelize": "^6.6.2",

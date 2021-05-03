@@ -1,11 +1,10 @@
 {
   "development": {
-    "username": "lxsjrtqsoawefv",
-    "password": "7a39ddf24c5e8cd6b306027608eded7fc6feb2cbdb79cc97d59b3bf9e765e37d",
-    "database": "d2jhk4ip1o7a2m",
-    "host": "ec2-54-163-140-104.compute-1.amazonaws.com",
-    "post": "5432",
-    "dialect": "postgres"
+    "username": "lucas",
+    "password": "Lc$Zala96",
+    "database": "tallerIntegracion",
+    "host": "localhost",
+    "dialect": "mysql"
   },
   "test": {
     "username": "lxsjrtqsoawefv",

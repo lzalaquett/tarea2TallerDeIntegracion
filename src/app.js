@@ -10,7 +10,11 @@ const app = express();
 
 app.use(express.json({limit: '50mb'}));
 app.use(express.urlencoded({extended: true, limit: '50mb'}));
+
+//rutas generales
 app.use('/artists', routes.artists);
+app.use('/albums', routes.albums);
+app.use('/tracks', routes.tracks);
 
 app.use((req, res) => {
     res.status(404).send('404: Page not found');
@@ -74,10 +78,10 @@ app.post('/albums/:album_id/tracks', (req, res) => {
 
 //PUTs
 app.put('/artists/:artist_id/albums/play', (req, res) => {
-    res.send('play all traks from all albums from an artist')
+    res.send('play all tracks from all albums from an artist')
 })
 app.put('/albums/:album_id/tracks/play', (req, res) => {
-    res.send('play all traks from album id')
+    res.send('play all tracks from album id')
 })
 app.put('/tracks/:track_id/play', (req, res) => {
     res.send('play track id')

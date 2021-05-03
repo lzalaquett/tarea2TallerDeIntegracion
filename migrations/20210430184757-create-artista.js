@@ -15,7 +15,7 @@ module.exports = {
       albums: {
         type: Sequelize.STRING
       },
-      traks: {
+      tracks: {
         type: Sequelize.STRING
       },
       self: {

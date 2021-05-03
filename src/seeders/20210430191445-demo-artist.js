@@ -16,7 +16,7 @@ module.exports = {
      name: 'Parafraseo',
      age: 20,
      albums: 'www.url.com/artists/0001/albums',
-     traks: 'www.url.com/artists/0001/traks',
+     tracks: 'www.url.com/artists/0001/tracks',
      self: 'www.url.com/artists/0001',
      createdAt: new Date(),
      updatedAt: new Date(),

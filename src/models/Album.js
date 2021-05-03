@@ -15,10 +15,11 @@ module.exports = (sequelize, DataTypes) => {
   };
   Album.init({
     id: { type: DataTypes.STRING, primaryKey: true },
+    artist_id: DataTypes.STRING,
     name: DataTypes.STRING,
-    genre: DataTypes.INTEGER,
+    genre: DataTypes.STRING,
     artist: DataTypes.STRING,
-    traks: DataTypes.STRING,
+    tracks: DataTypes.STRING,
     self: DataTypes.STRING
   }, {
     sequelize,

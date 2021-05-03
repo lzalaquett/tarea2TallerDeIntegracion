@@ -6,16 +6,19 @@ module.exports = {
         type: Sequelize.STRING,
         primaryKey: true,
       },
+      artist_id: {
+        type: Sequelize.STRING
+      },
       name: {
         type: Sequelize.STRING
       },
       genre: {
-        type: Sequelize.INTEGER
+        type: Sequelize.STRING
       },
       artist: {
         type: Sequelize.STRING
       },
-      traks: {
+      tracks: {
         type: Sequelize.STRING
       },
       self: {
