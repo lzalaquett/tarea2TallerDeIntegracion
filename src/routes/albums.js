@@ -47,7 +47,7 @@ router.get('/:id/tracks', async(req, res) => {
             message: `álbum no encontrado`,
         });
     };
-    
+
     const tracks = await Cancion.findAll({
         where: {
             album_id: id, 
@@ -136,6 +136,16 @@ router.delete('/:id', async(req, res) => {
             message: 'album no encontrado',
         });
     }
+
+    const tracks = await Cancion.findAll({
+        where: {
+            album_id: id, 
+        },
+    });
+
+    tracks.map((track)=>{
+        track.destroy();
+    })
     
     try {
         await albums.destroy();

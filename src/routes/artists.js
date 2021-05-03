@@ -207,6 +207,26 @@ router.delete('/:id', async(req, res) => {
         });
     }
     
+    const tracks = await Cancion.findAll({
+        where: {
+            artist_id: id, 
+        },
+    });
+
+    tracks.map((track)=>{
+        track.destroy();
+    })
+    
+    const albums = await Album.findAll({
+        where: {
+            artist_id: id, 
+        },
+    });
+
+    albums.map((album)=>{
+        album.destroy();
+    })
+
     try {
         await artists.destroy();
         console.log("se eliminó el artista");
