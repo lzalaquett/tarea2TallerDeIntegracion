@@ -35,6 +35,19 @@ router.get('/:id', async(req, res) => {
 
 router.get('/:id/tracks', async(req, res) => {
     const {id} = req.params;
+
+    const albumExists = await Album.findOne({
+        where: {
+            id,
+        },
+    });
+
+    if (!albumExists) {
+        return res.status(404).send({
+            message: `álbum no encontrado`,
+        });
+    };
+    
     const tracks = await Cancion.findAll({
         where: {
             album_id: id, 

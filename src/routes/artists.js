@@ -38,8 +38,20 @@ router.get('/:id', async(req, res) => {
 });
 
 router.get('/:id/albums', async(req, res) => {
-    
     const {id} = req.params;
+
+    const artistaExists = await Artista.findOne({
+        where: {
+            id,
+        },
+    });
+
+    if (!artistaExists) {
+        return res.status(404).send({
+            message: `artista no encontrado`,
+        });
+    };
+
     const albums = await Album.findAll({
         where: {
             artist_id: id, 
@@ -55,8 +67,19 @@ router.get('/:id/albums', async(req, res) => {
 });
 
 router.get('/:id/tracks', async(req, res) => {
-    
     const {id} = req.params;
+
+    const artistaExists = await Artista.findOne({
+        where: {
+            id,
+        },
+    });
+
+    if (!artistaExists) {
+        return res.status(404).send({
+            message: `artista no encontrado`,
+        });
+    };
     const tracks = await Cancion.findAll({
         where: {
             artist_id: id, 
